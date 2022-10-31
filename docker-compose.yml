@@ -1,0 +1,25 @@
+version: "3"
+services:
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - USE_CORS=${USE_CORS}
+      - REFRESH_TOKEN_IN_COOKIE=${REFRESH_TOKEN_IN_COOKIE}
+      - REFRESH_TOKEN_IN_BODY=${REFRESH_TOKEN_IN_BODY}
+      - FLASK_APP=${FLASK_APP}
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres 
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - blog-db:/var/lib/postgresql/data
+
+volumes:
+  blog-db:

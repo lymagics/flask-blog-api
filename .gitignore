@@ -1,0 +1,11 @@
+# Python and cache files
+__pycache__
+.pytest_cache
+.vscode
+
+# Virtual environment
+venv
+.env
+
+# Local db 
+*.sqlite
